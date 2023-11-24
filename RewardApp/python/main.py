@@ -9,20 +9,21 @@ from Fabrics.emearld_generator import EmeraldGenerator
 from Fabrics.ruby_generator import RubyGenerator
 from Fabrics.sapphire_generator import SapphireGenerator
 
-
 if __name__ == "__main__":
-    GoldGenerator().create_item().open()
+    generators = []
 
-    generators = [
-        GoldGenerator(),
-        GemGenerator(),
-        SilverGenerator(),
-        AmetistGenerator(),
-        AquamarineGenerator(),
-        DiamondGenerator(),
-        EmeraldGenerator(),
-        RubyGenerator(),
-        SapphireGenerator(),
-    ]
+    generators.append(DiamondGenerator())
+
+    for i in range(3):
+        generators.append(GoldGenerator())
+
     for i in range(10):
-        generators[randint(0, 8)].create_item().open()
+        generators.append(SilverGenerator())
+        generators.append(AmetistGenerator())
+        generators.append(AquamarineGenerator())
+        generators.append(GemGenerator())
+        generators.append(EmeraldGenerator())
+        generators.append(RubyGenerator())
+        generators.append(SapphireGenerator())
+    for i in range(100):
+        generators[randint(0, len(generators) - 1)].create_item().open()
